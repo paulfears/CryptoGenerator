@@ -61,9 +61,20 @@ class Minter extends React.Component{
 
     createToken = async (e) =>{
         this.openSpinner();
-        this.tokenFactory = new this.props.web3.eth.Contract(ContractFactoryABI,"0xB614a403594a48E21B14a850CB0b2ed1eAD23B3c");
+        let chainId = await this.props.web3.eth.getChainId()
+        if(chainId == 56){
+            this.tokenFactory = new this.props.web3.eth.Contract(ContractFactoryABI,"0xB614a403594a48E21B14a850CB0b2ed1eAD23B3c");
+        }
+        else if(chainId == 1){
+            this.tokenFactory = new this.props.web3.eth.Contract(ContractFactoryABI,"0x4D04B95Aa1A5d9e19d43fa1dCF90d9c551354a6D");
+        }
+        else{
+            alert("metamask must either be connected to etherium mainnet or binance smart chain mainnet");
+            return;
+        }
         console.log(this.state);
         this.price = await this.tokenFactory.methods.price().call()
+        console.log(this.price)
         console.log(this.tokenFactory.methods);
         this.createCoinFunction = this.tokenFactory.methods.createCoin(
             this.state.name, 
@@ -76,15 +87,13 @@ class Minter extends React.Component{
             from: this.props.accountList[this.state.accountIndex],
             value: this.price
         })
-        try{
+
         this.newCoin = await this.createCoinFunction.send({
             from: this.props.accountList[this.state.accountIndex],
             gas: gasAmmount,
             value: this.price,
-        });
-        }catch(e){
-
-        }
+        }).on('error', (e)=>{alert("an error occured"); alert(e)})
+        
         console.log(this.newCoin);
         this.closeSpinner();
         
