@@ -27,7 +27,13 @@ class MyCoins extends React.Component{
                 style={this.state.selection? {display:"block"}: {display:"none"}} //only displays if selection menu is up
             >
                 <ListGroup>
-                    {this.props.coins}
+                {this.props.coins.length>0?
+                    <div style={{overflowY: 'scroll'}}>
+                        {this.props.coins}
+                    </div>
+                    :
+                    <p className="lead">You haven't created any coins yet with this account on this chain</p>
+                }
                 </ListGroup>
             </div>
         )

@@ -1,7 +1,7 @@
 function Docs(props){
     return(
         <div>
-            <h1>docs</h1>
+            <p className="display-4">docs</p>
         </div>
     )
 }

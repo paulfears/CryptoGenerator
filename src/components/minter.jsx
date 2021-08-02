@@ -87,7 +87,7 @@ class Minter extends React.Component{
             from: this.props.accountList[this.state.accountIndex],
             value: this.price
         })
-
+        
         this.newCoin = await this.createCoinFunction.send({
             from: this.props.accountList[this.state.accountIndex],
             gas: gasAmmount,

@@ -12,14 +12,15 @@ import ListGroup from "react-bootstrap/ListGroup"
 import React from 'react';
 import Web3 from 'web3'
 import CoinManager from './CoinManager';
-
-
+import ethIcon from '../images/etheriumCoin.png';
+import bscIcon from '../images/bsc.svg';
+import vendingMachine from '../images/vendingMachine.jpeg';
 class Generator extends React.Component{
 
   constructor(props){
     super(props)
     this.state = {
-      screen: "minter",
+      screen: this.props.screen,
       connected: false,
       addressList: [],
       web3: null,
@@ -29,8 +30,10 @@ class Generator extends React.Component{
       contracts: [],
       currentCoinContract: null,
       currentCoinName: null,
-      currentCoinAddress: null
+      currentCoinAddress: null,
+      chainID: null
     }
+    
     
   }
 
@@ -68,9 +71,13 @@ class Generator extends React.Component{
 
   connectMetaMask = async (e) =>{
     this.accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
+    window.ethereum.on('accountsChanged', this.connectMetaMask);
+    window.ethereum.on('disconnect', this.disconnectMetaMask);
+    window.ethereum.on('chainChanged', this.connectMetaMask);
     console.log(this.accounts);
     this.web3 = new Web3(window.ethereum);
     this.chainID = await this.web3.eth.getChainId();
+    this.setState({chainID : this.chainID});
     console.log("this.chainID === ", this.chainID);
     if(this.chainID !== 56 && this.chainID !== 1){
         this.setState({showBinaceWarning: true})
@@ -130,7 +137,7 @@ class Generator extends React.Component{
                     </div>
                     
                 </div>
-                {address}
+                <p className="text-break">{address}</p>
                 
             </ListGroup.Item>
         )
@@ -149,10 +156,16 @@ class Generator extends React.Component{
         <div className="col-12 col-lg-6"style={{width: "50%"}}> 
             <div style={{display:"flex"}}>
               <Slider onClick={this.toggleScreen}/>
-              <p style={{marginLeft: "20px", transform: "translateY(-40%)"}} className="display-4">coin {this.state.screen === "minter"? "minter" : "manager"}</p>
-              
+              <p style={{marginLeft: "20px", transform: "translateY(-40%)", marginRight: "20px"}} className="display-4">coin {this.state.screen === "minter"? "minter" : "manager"}</p>
+              {this.state.connected?
+                <>
+                  {this.state.chainID==1? <img width="30" alt="connected to the etherium mainnet" height="30" src={ethIcon}/>: null}
+                  {this.state.chainID==56? <img width="30" alt="connected to binance smart chain" height="30" src={bscIcon}/>: null}
+                </>
+              :
+              null}              
             </div>
-            
+
             {this.state.connected?null:<Button variant="warning" size="sm" onClick={this.connectMetaMask}>Connect</Button>}
             {this.state.connected?
             <div className="d-flex">
@@ -197,7 +210,7 @@ class Generator extends React.Component{
             
         </div>
         <div className="d-none d-lg-block col-6">
-            <p>right side of screen</p>
+            <img style={{width:'100%'}} src={vendingMachine}/>
         </div>
         </div>
         <div style={{height: "100px"}}></div>

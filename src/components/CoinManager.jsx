@@ -18,6 +18,7 @@ class CoinManager extends React.Component{
             
             address : this.props.coinAddress,
             web3 : this.props.web3,
+            renounceOwnerShipAttemp: false,
             account_index: 0,
             charityAddressInput: "",
             inputs: {
@@ -67,6 +68,17 @@ class CoinManager extends React.Component{
             })
         }
     }
+
+    renounceOwnerShip = async ()=>{
+        let func = this.props.contract.methods.renounceOwnership()
+        let totalGas = await func.estimateGas({from: this.props.Account})
+        func.send({
+            from: this.props.Account,
+            gas: totalGas
+        })
+    }
+
+    
     
     setCharityPercent = async ()=>{
         let setCharityPercentfunc = this.props.contract.methods.setChartityFeePercent(this.state.inputs["_charityFee"])
@@ -215,7 +227,17 @@ class CoinManager extends React.Component{
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>General Functions</Accordion.Header>
                     <Accordion.Body>
-                        <Button variant="danger" onClick={this.renounceOwnerShip}>renounceOwnership</Button>
+                        <Button variant="danger" onClick={()=>this.setState({renounceOwnerShipAttemp: true})}>renounceOwnership</Button>
+                        {this.state.renounceOwnerShipAttemp? 
+                        <>
+                        <p>This will mean that you no longer have the ability to call edit any of the contract parameters</p>
+                        <p>are you sure?</p>
+                        <Button variant="success" onClick={()=>this.setState({renounceOwnerShipAttemp: false})}>no</Button>
+                        <Button variant="danger" onClick={this.renounceOwnerShip}>yes</Button> 
+                        </>
+                        :
+                        null
+                        }
                     </Accordion.Body>
                 </Accordion.Item>
                 
