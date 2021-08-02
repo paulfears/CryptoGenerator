@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/CryptoGenerator/static/css/main.a604abe0.chunk.css",
-    "main.js": "/CryptoGenerator/static/js/main.bc5b3bfd.chunk.js",
-    "main.js.map": "/CryptoGenerator/static/js/main.bc5b3bfd.chunk.js.map",
+    "main.js": "/CryptoGenerator/static/js/main.2a5a4b67.chunk.js",
+    "main.js.map": "/CryptoGenerator/static/js/main.2a5a4b67.chunk.js.map",
     "runtime-main.js": "/CryptoGenerator/static/js/runtime-main.8cb92719.js",
     "runtime-main.js.map": "/CryptoGenerator/static/js/runtime-main.8cb92719.js.map",
     "static/css/2.373bc5f8.chunk.css": "/CryptoGenerator/static/css/2.373bc5f8.chunk.css",
@@ -23,6 +23,6 @@
     "static/css/2.373bc5f8.chunk.css",
     "static/js/2.420af41f.chunk.js",
     "static/css/main.a604abe0.chunk.css",
-    "static/js/main.bc5b3bfd.chunk.js"
+    "static/js/main.2a5a4b67.chunk.js"
   ]
 }
