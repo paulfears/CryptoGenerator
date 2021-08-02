@@ -13,7 +13,6 @@ function Home(){
             <br/>
             <br/>
             <br/>
-            <WavesDivide/>
             <br/>
             <p className="display-6">Features</p>
 
