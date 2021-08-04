@@ -15,6 +15,8 @@ import CoinManager from './CoinManager';
 import ethIcon from '../images/etheriumCoin.png';
 import bscIcon from '../images/bsc.svg';
 import vendingMachine from '../images/vendingMachine.jpeg';
+
+
 class Generator extends React.Component{
 
   constructor(props){

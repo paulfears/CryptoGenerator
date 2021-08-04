@@ -4,7 +4,8 @@ import ContractFrameABI from './ContractFrameABI';
 import Accordion from 'react-bootstrap/Accordion';
 import Button from 'react-bootstrap/Button';
 import EditContract from './EditCointract';
-
+import pancakeswapRouterABI from './PancakeswapRouterABI';
+import AddLiquidityPancake from './AddliquidityPancake';
 
 class CoinManager extends React.Component{
     //this.props.coinAddress
@@ -35,6 +36,7 @@ class CoinManager extends React.Component{
             }
         }
         this.abi = ContractFrameABI
+        this.routerabi = pancakeswapRouterABI
     }
 
     setContractAttribute = (functionName, inputName)=>{
@@ -77,6 +79,8 @@ class CoinManager extends React.Component{
             gas: totalGas
         })
     }
+
+    
 
     
     
@@ -238,6 +242,16 @@ class CoinManager extends React.Component{
                         :
                         null
                         }
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="3">
+                    <Accordion.Header>PancakeSwap</Accordion.Header>
+                    <Accordion.Body>
+                        <AddLiquidityPancake 
+                        contract={this.props.contract} 
+                        web3={this.props.web3} 
+                        tokenAddress={this.props.address} 
+                        Account={this.props.Account}/>
                     </Accordion.Body>
                 </Accordion.Item>
                 
