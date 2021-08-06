@@ -1,5 +1,6 @@
 import React from 'react'
 import pancakeswapRouterABI from './PancakeswapRouterABI'
+import PancakeswapFactoryABI from './PancakeswapFactoryABI'
 import Form from 'react-bootstrap/Form'
 import Accordion from 'react-bootstrap/Accordion'
 import Button from 'react-bootstrap/Button'
@@ -60,6 +61,8 @@ class AddLiquidityPancake extends React.Component{
         this.setState({slippage: Number(e.target.value)})
     }
 
+    
+
     addLiquidityBNB = async ()=>{
         
         
@@ -93,8 +96,25 @@ class AddLiquidityPancake extends React.Component{
             from: this.props.Account,
             value: this.state.bnbValue
         })
-        .on('receipt',()=>{
+        .on('receipt', async ()=>{
             this.setState({status: "success"})
+            this.pancakeFactory = new this.props.web3.eth.Contract(PancakeswapFactoryABI, "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73");
+            let lpPair = await this.pancakeFactory.methods.getPair("0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c", this.props.tokenAddress).call()
+            let symbol = await this.props.contract.methods.symbol().call()
+            let name = await this.props.contract.methods.name().call()
+            const wasAdded = await window.ethereum.request({
+            method: 'wallet_watchAsset',
+            params: {
+                type: 'ERC20', // Initially only supports ERC20, but eventually more!
+                options: {
+                address: lpPair, // The address that the token is at.
+                symbol: symbol+"-LP",
+                decimals: 18,
+                name: name+"-LP"
+                },
+            },
+            });
+            //wbnb address: 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c
         })
         .on('error', ()=>{
             this.setState({status: "error"})
@@ -134,6 +154,7 @@ class AddLiquidityPancake extends React.Component{
             <div className="d-flex">
                 <Button onClick={this.approveTokens}>approve</Button>
                 <Button onClick={this.addLiquidityBNB} disabled={!this.state.approved}>Add to pancakeswap</Button>
+                
             </div>
             <br/>
             <Accordion>
