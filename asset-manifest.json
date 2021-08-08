@@ -1,19 +1,19 @@
 {
   "files": {
     "main.css": "/CryptoGenerator/static/css/main.00395570.chunk.css",
-    "main.js": "/CryptoGenerator/static/js/main.a4a407c3.chunk.js",
-    "main.js.map": "/CryptoGenerator/static/js/main.a4a407c3.chunk.js.map",
+    "main.js": "/CryptoGenerator/static/js/main.b9355103.chunk.js",
+    "main.js.map": "/CryptoGenerator/static/js/main.b9355103.chunk.js.map",
     "runtime-main.js": "/CryptoGenerator/static/js/runtime-main.8cb92719.js",
     "runtime-main.js.map": "/CryptoGenerator/static/js/runtime-main.8cb92719.js.map",
     "static/css/2.373bc5f8.chunk.css": "/CryptoGenerator/static/css/2.373bc5f8.chunk.css",
-    "static/js/2.e80c6e36.chunk.js": "/CryptoGenerator/static/js/2.e80c6e36.chunk.js",
-    "static/js/2.e80c6e36.chunk.js.map": "/CryptoGenerator/static/js/2.e80c6e36.chunk.js.map",
+    "static/js/2.f0b1089b.chunk.js": "/CryptoGenerator/static/js/2.f0b1089b.chunk.js",
+    "static/js/2.f0b1089b.chunk.js.map": "/CryptoGenerator/static/js/2.f0b1089b.chunk.js.map",
     "static/js/3.9aa5f3f0.chunk.js": "/CryptoGenerator/static/js/3.9aa5f3f0.chunk.js",
     "static/js/3.9aa5f3f0.chunk.js.map": "/CryptoGenerator/static/js/3.9aa5f3f0.chunk.js.map",
     "index.html": "/CryptoGenerator/index.html",
     "static/css/2.373bc5f8.chunk.css.map": "/CryptoGenerator/static/css/2.373bc5f8.chunk.css.map",
     "static/css/main.00395570.chunk.css.map": "/CryptoGenerator/static/css/main.00395570.chunk.css.map",
-    "static/js/2.e80c6e36.chunk.js.LICENSE.txt": "/CryptoGenerator/static/js/2.e80c6e36.chunk.js.LICENSE.txt",
+    "static/js/2.f0b1089b.chunk.js.LICENSE.txt": "/CryptoGenerator/static/js/2.f0b1089b.chunk.js.LICENSE.txt",
     "static/media/4.62550610.jpg": "/CryptoGenerator/static/media/4.62550610.jpg",
     "static/media/bsc.e03c891d.svg": "/CryptoGenerator/static/media/bsc.e03c891d.svg",
     "static/media/charity.2695484a.jpeg": "/CryptoGenerator/static/media/charity.2695484a.jpeg",
@@ -25,8 +25,8 @@
   "entrypoints": [
     "static/js/runtime-main.8cb92719.js",
     "static/css/2.373bc5f8.chunk.css",
-    "static/js/2.e80c6e36.chunk.js",
+    "static/js/2.f0b1089b.chunk.js",
     "static/css/main.00395570.chunk.css",
-    "static/js/main.a4a407c3.chunk.js"
+    "static/js/main.b9355103.chunk.js"
   ]
 }
