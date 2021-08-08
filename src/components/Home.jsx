@@ -10,7 +10,7 @@ import BscEth from '../images/4.jpg'
 function Home(){
     return(
         <div>
-            <p className="display-3">Crypto Generator</p>
+            <p className="display-3">Crypto Generator <b style={{color: "green"}}>(live)</b></p>
             <p className="display-6">easily create and manage your own crypto currency</p>
             <p>
             Crypto generator allows you to create both etherium erc20's as well as binance smart chain BEP20 coins. 
@@ -54,6 +54,28 @@ function Home(){
                     <Card.Title style={{fontSize: "1.6em"}} className="lead text-center">Etherium or Binance</Card.Title>
                     
                     <p className="text-center">Both Binance Smart Chain tokens and Etherium tokens can be created instantly</p>
+                </Card>
+            </CardGroup>
+            <div style={{height:"100px"}}></div>
+            <p className="display-6">Use Cases</p>
+            <br/>
+            <br/>
+            <CardGroup>
+                <Card>
+                    <Card.Header style={{fontSize: "1.6em"}}  className=" text-center">Safemoon Clones</Card.Header>
+                    <Card.Body>All tokens created can instantly be converted with the manager use burning to liquidity and the redistribution popularized by safemoon</Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header style={{fontSize: "1.6em"}}  className=" text-center">Meme Tokens</Card.Header>
+                    <Card.Body>Own you're very own meme token (elone-doge-moon) (poopbazooka) ($elongrugpull) and any other shitcoin you can come up with</Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header style={{fontSize: "1.6em"}}  className=" text-center">Charity Tokens</Card.Header>
+                    <Card.Body>With optional but built in charity functionality crypto generator will allow you create a force for positive change</Card.Body>
+                </Card>
+                <Card>
+                    <Card.Header style={{fontSize: "1.6em"}}  className=" text-center">Smart Tokens</Card.Header>
+                    <Card.Body>Combine these features in anyway you see fit to create the next huge crypto currency</Card.Body>
                 </Card>
             </CardGroup>
             <div style={{height:"100px"}}></div>

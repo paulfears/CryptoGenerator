@@ -32,7 +32,7 @@ class App extends React.Component{
                     <Nav>
                         <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/">home</Link></Nav.Link>
                         <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/generator">builder/manager</Link></Nav.Link>  
-                        <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/docs">docs</Link></Nav.Link>
+                        {/*<Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/docs">docs</Link></Nav.Link>*/}
                     </Nav>
                 </Container>
             </Navbar>
