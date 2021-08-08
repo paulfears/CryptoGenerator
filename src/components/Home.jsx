@@ -1,5 +1,6 @@
 import React from 'react'
-import WavesDivide from './wavesDivide';
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
+import Generator from './Generator'
 function Home(){
     return(
         <div>
@@ -9,7 +10,13 @@ function Home(){
             Crypto generator allows you to create both etherium erc20's as well as binance smart chain BEP20 coins. 
             And allows for the creation of charity tokens and safemoon clones. You will have 100% ownership of your token contract and all inital supply.
             </p>
-            <a href="/generator" className="btn btn-outline-primary btn-lg">Start Building</a>
+            <Router>
+                <Switch>
+                    <Route path="/generator"><Generator screen="minter"/></Route>
+                </Switch>
+            </Router>
+            <Link style={{color:"white", textDecoration:"none"}} to="/generator"><a className="btn btn-outline-primary btn-lg">Start Building</a></Link>
+            
             <br/>
             <br/>
             <br/>
