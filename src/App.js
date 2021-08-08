@@ -19,6 +19,7 @@ class App extends React.Component{
     render(){
         return(
             <>
+            <title>CryptoGenerator</title>
             <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
