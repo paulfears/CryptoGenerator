@@ -155,8 +155,8 @@ class Generator extends React.Component{
         
         
         <div className="row">
-        <div className="col-12 col-lg-6"style={{width: "50%"}}> 
-            <div style={{display:"flex"}}>
+        <div className="col-md-12 col-lg-6"style={{width: "50%"}}> 
+            <div style={{display:"flex", width: "100%"}}>
               <Slider onClick={this.toggleScreen}/>
               <p style={{marginLeft: "20px", transform: "translateY(-40%)", marginRight: "20px"}} className="display-4">coin {this.state.screen === "minter"? "minter" : "manager"}</p>
               {this.state.connected?

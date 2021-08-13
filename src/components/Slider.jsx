@@ -11,10 +11,12 @@ class Slider extends React.Component{
 
     render(){
         return(
+        <span>
         <label className="switch">
             <input type="checkbox" checked={this.props.checked} onClick={this.props.onClick}/>
             <span className="slider round"></span>
         </label>
+        </span>
         )
     }
 
