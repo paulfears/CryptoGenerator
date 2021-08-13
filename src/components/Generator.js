@@ -2,7 +2,8 @@ import { render } from '@testing-library/react';
 import '../App.css';
 import ContractFactoryABI from './ContractFactorABI';
 import ContractFrameABI from './ContractFrameABI';
-
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import Web3Modal from "web3modal";
 import Minter from "./minter.jsx"
 import MyCoins from "./MyCoins.jsx"
 import Button from "react-bootstrap/Button"
@@ -70,25 +71,65 @@ class Generator extends React.Component{
       },
     });
   }
-
-  connectMetaMask = async (e) =>{
-    this.accounts = await window.ethereum.request({method: 'eth_requestAccounts'});
-    window.ethereum.on('accountsChanged', this.connectMetaMask);
-    window.ethereum.on('disconnect', this.disconnectMetaMask);
-    window.ethereum.on('chainChanged', this.connectMetaMask);
-    console.log(this.accounts);
-    this.web3 = new Web3(window.ethereum);
+  
+  connect = async () =>{
+    const providerOptions = {
+      walletconnect: {
+        package: WalletConnectProvider,
+        options: {
+          bridge: "https://bridge.walletconnect.org",
+          rpc: {
+            56: "https://bsc-dataseed.binance.org/",
+          },
+          network: "binance",
+        },
+      },
+    };
+    const web3Modal = new Web3Modal({
+      cacheProvider: false, // optional
+      providerOptions // required
+    });
+    
+    const provider = await web3Modal.connect();
+    
+    this.web3 = new Web3(provider);
+    this.accounts = await this.web3.eth.getAccounts()
     this.chainID = await this.web3.eth.getChainId();
-    this.setState({chainID : this.chainID});
-    console.log("this.chainID === ", this.chainID);
+
     if(this.chainID !== 56 && this.chainID !== 1){
-        this.setState({showBinaceWarning: true})
-        return;
+      this.setState({showBinaceWarning: true})
+      return;
     }
+    provider.on("accountsChanged", (accounts) => {
+      this.accounts = accounts;
+      this.setState({addressList: this.accounts});
+      this.updateConnection()
+    });
+    provider.on("chainChanged", (chainID) => {
+      this.chainId = chainID;
+      this.setState({chainID: this.chainID})
+      this.updateConnection();
+    });
+    provider.on('disconnect', this.disconnectMetaMask);
     this.setState({web3: this.web3});
     this.setState({connected: true});
+    this.setState({chainID : this.chainID});
     this.setState({addressList: this.accounts});
     this.getUserCoins();
+  }
+
+  updateConnection = async () =>{
+    this.setState({connected: false});
+    this.accounts = await this.web3.eth.getAccounts()
+    this.chainID = await this.web3.eth.getChainId();
+    if(this.chainID !== 56 && this.chainID !== 1){
+      this.setState({showBinaceWarning: true})
+      return;
+    }
+    this.setState({chainID : this.chainID});
+    this.setState({addressList: this.accounts});
+    await this.getUserCoins()
+    this.setState({connected: true});
   }
 
   manageCoin = (coinContract, address, coinName) => {
@@ -167,8 +208,7 @@ class Generator extends React.Component{
               :
               null}              
             </div>
-
-            {this.state.connected?null:<Button variant="warning" size="sm" onClick={this.connectMetaMask}>Connect</Button>}
+            {this.state.connected?null:<Button variant="warning" size="sm" onClick={this.connect}>Connect</Button>}
             {this.state.connected?
             <div className="d-flex">
             <Button size="sm" variant="warning" onClick={this.disconnectMetaMask}>Disconnect</Button>
