@@ -27,7 +27,7 @@ class App extends React.Component{
             crossOrigin="anonymous"
             />
             <Router>
-            <Navbar bg="dark">
+            <Navbar bg="dark" fixed="top" >
                 
                 <Container>
                     <Nav>
