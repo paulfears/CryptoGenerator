@@ -5,7 +5,6 @@ import FormControl from 'react-bootstrap/FormControl';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import ClipLoader from "react-spinners/ClipLoader";
-import ListGroup from "react-bootstrap/ListGroup";
 import ChainDialog from './ChainDialog';
 import RawInput from './RawInput';
 
@@ -62,10 +61,10 @@ class Minter extends React.Component{
     createToken = async (e) =>{
         this.openSpinner();
         let chainId = await this.props.web3.eth.getChainId()
-        if(chainId == 56){
+        if(chainId === 56){
             this.tokenFactory = new this.props.web3.eth.Contract(ContractFactoryABI,"0xB614a403594a48E21B14a850CB0b2ed1eAD23B3c");
         }
-        else if(chainId == 1){
+        else if(chainId === 1){
             this.tokenFactory = new this.props.web3.eth.Contract(ContractFactoryABI,"0x4D04B95Aa1A5d9e19d43fa1dCF90d9c551354a6D");
         }
         else{

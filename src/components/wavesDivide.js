@@ -1,6 +1,7 @@
-import React from 'react' 
-import './wavesDivide.js'
-import './waves.css'
+import React from 'react';
+import './wavesDivide.js';
+import './waves.css';
+
 const WavesDivide = function() {
       return (
         <div>

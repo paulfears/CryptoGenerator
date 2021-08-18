@@ -1,11 +1,11 @@
-import React from 'react'
-import Form from 'react-bootstrap/Form'
-import Button from 'react-bootstrap/Button'
+import React from 'react';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
 import {BsXOctagonFill, BsCheck} from "react-icons/bs";
 import { IconContext } from "react-icons";
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
 function EditContract(props){
     return(
         <Card style={{marginBottom: "10px"}}>

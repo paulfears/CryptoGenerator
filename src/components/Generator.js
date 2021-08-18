@@ -1,15 +1,13 @@
-import { render } from '@testing-library/react';
 import '../App.css';
 import ContractFactoryABI from './ContractFactorABI';
 import ContractFrameABI from './ContractFrameABI';
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3Modal from "web3modal";
-import Minter from "./minter.jsx"
-import MyCoins from "./MyCoins.jsx"
-import Button from "react-bootstrap/Button"
+import Minter from "./minter.jsx";
+import MyCoins from "./MyCoins.jsx";
+import Button from "react-bootstrap/Button";
 import Slider from "./Slider";
-import Container from "react-bootstrap/Container"
-import ListGroup from "react-bootstrap/ListGroup"
+import ListGroup from "react-bootstrap/ListGroup";
 import React from 'react';
 import Web3 from 'web3'
 import CoinManager from './CoinManager';
@@ -141,10 +139,10 @@ class Generator extends React.Component{
   }
 
   getUserCoins = async ()=>{
-    if(this.chainID == 56){
+    if(this.chainID === 56){
       this.tokenFactory = new this.web3.eth.Contract(ContractFactoryABI,"0xB614a403594a48E21B14a850CB0b2ed1eAD23B3c");
     }
-    if(this.chainID == 1){
+    if(this.chainID === 1){
       this.tokenFactory = new this.web3.eth.Contract(ContractFactoryABI,"0x4D04B95Aa1A5d9e19d43fa1dCF90d9c551354a6D")
     }
     console.log("begin waiting")
@@ -202,8 +200,8 @@ class Generator extends React.Component{
               <p style={{marginLeft: "20px", transform: "translateY(-40%)", marginRight: "20px"}} className="display-4">coin {this.state.screen === "minter"? "minter" : "manager"}</p>
               {this.state.connected?
                 <>
-                  {this.state.chainID==1? <img width="30" alt="connected to the etherium mainnet" height="30" src={ethIcon}/>: null}
-                  {this.state.chainID==56? <img width="30" alt="connected to binance smart chain" height="30" src={bscIcon}/>: null}
+                  {this.state.chainID===1? <img width="30" alt="connected to the etherium mainnet" height="30" src={ethIcon}/>: null}
+                  {this.state.chainID===56? <img width="30" alt="connected to binance smart chain" height="30" src={bscIcon}/>: null}
                 </>
               :
               null}              
@@ -252,7 +250,7 @@ class Generator extends React.Component{
             
         </div>
         <div className="d-none d-lg-block col-6">
-            <img style={{width:'100%'}} src={vendingMachine}/>
+            <img style={{width:'100%'}} src={vendingMachine} alt=''/>
         </div>
         </div>
         <div style={{height: "100px"}}></div>
