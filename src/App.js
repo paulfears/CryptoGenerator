@@ -1,7 +1,6 @@
-import React from 'react'
-import { render } from "@testing-library/react";
+import React from 'react';
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom';
-import Docs from "./components/Docs"
+import Docs from "./components/Docs";
 import Generator from './components/Generator';
 import Home from './components/Home';
 import Navbar from 'react-bootstrap/Navbar';
@@ -33,7 +32,7 @@ class App extends React.Component{
                     <Nav>
                         <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/">home</Link></Nav.Link>
                         <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/generator">builder/manager</Link></Nav.Link>  
-                        {/*<Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/docs">docs</Link></Nav.Link>*/}
+                        <Nav.Link><Link style={{color:"white", textDecoration:"none"}} to="/docs">docs</Link></Nav.Link>
                     </Nav>
                 </Container>
             </Navbar>

@@ -161,26 +161,26 @@ class CoinManager extends React.Component{
                     <Accordion.Body> 
                         <EditContract 
                             title="Charity Wallet"
-                            label="Set Charity wallet Address"
+                            label="Set Charity Wallet Address"
                             type="text"
                             postFix=""
                             onGet={this.getContractAttribute('charityWallet')}
                             getValue={this.state.currentValues.charityWallet}
                             onSet={this.setContractAttribute('setcharityWallet', 'charityWallet')}
                             onChange={this.updateAttribute('charityWallet')}
-                            placeholder="new charity Wallet address"
+                            placeholder="New Charity Wallet Address"
                             state={this.state.states.setcharityWallet}
                         />
                         <EditContract 
                             title="Charity Percent"
-                            label="Set Charity wallet Tax percent"
+                            label="Set Charity Wallet Tax Percent"
                             type="number"
                             postFix="%"
                             onGet={this.getContractAttribute('_charityFee')}
                             getValue={this.state.currentValues._charityFee}
                             onSet={this.setContractAttribute("setChartityFeePercent", "_charityFee")}
                             onChange={this.updateAttribute('_charityFee')}
-                            placeholder="new charity tax percent"
+                            placeholder="New Charity Tax Percent"
                             state={this.state.states.setChartityFeePercent}
                         />
                         
@@ -191,39 +191,39 @@ class CoinManager extends React.Component{
                     <Accordion.Header>Tokenomics</Accordion.Header>
                     <Accordion.Body> 
                     <EditContract 
-                            title="Deflation percent"
-                            label="set the percent of tokens burned with every transaction"
+                            title="Deflation Percent"
+                            label="Set the percent of tokens burned with every transaction"
                             type="number"
                             postFix="%"
                             onGet={this.getContractAttribute('_burnFee')}
                             getValue={this.state.currentValues._burnFee}
                             onSet={this.setContractAttribute('setBurnFeePercent', '_burnFee')}
                             onChange={this.updateAttribute('_burnFee')}
-                            placeholder="burn fee percent"
+                            placeholder="Burn Fee Percent"
                             state={this.state.states.setBurnFeePercent}
                     />
                     <EditContract 
-                            title="liquidity Percent"
-                            label="set the percent of tokens to be sent to the liquidity pool every transaction"
+                            title="Liquidity Percent"
+                            label="Set the percent of tokens to be sent to the liquidity pool with every transaction"
                             type="number"
                             postFix="%"
                             onGet={this.getContractAttribute('_liquidityFee')}
                             getValue={this.state.currentValues._liquidityFee}
                             onSet={this.setContractAttribute('setLiquidityFeePercent', '_liquidityFee')}
                             onChange={this.updateAttribute('_liquidityFee')}
-                            placeholder="Liquidity fee percent"
+                            placeholder="Liquidity Fee Percent"
                             state={this.state.states.setLiquidityFeePercent}
                     />
                     <EditContract 
                             title="Dividend Percent"
-                            label="set the percent of tokens to be payed as a dividend with every transaction"
+                            label="Set the percent of tokens to be paid as a dividend with every transaction"
                             type="number"
                             postFix="%"
                             onGet={this.getContractAttribute('_taxFee')}
                             getValue={this.state.currentValues._taxFee}
                             onSet={this.setContractAttribute('setTaxFeePercent', '_taxFee')}
                             onChange={this.updateAttribute('_taxFee')}
-                            placeholder="redistribution percent"
+                            placeholder="Redistribution Percent"
                             state={this.state.states.setTaxFeePercent}
                     /> 
                     </Accordion.Body>
@@ -231,11 +231,11 @@ class CoinManager extends React.Component{
                 <Accordion.Item eventKey="2">
                     <Accordion.Header>General Functions</Accordion.Header>
                     <Accordion.Body>
-                        <Button variant="danger" onClick={()=>this.setState({renounceOwnerShipAttemp: true})}>renounceOwnership</Button>
+                        <Button variant="danger" onClick={()=>this.setState({renounceOwnerShipAttemp: true})}>Renounce Ownership</Button>
                         {this.state.renounceOwnerShipAttemp? 
                         <>
-                        <p>This will mean that you no longer have the ability to call edit any of the contract parameters</p>
-                        <p>are you sure?</p>
+                        <p>This will mean that you no longer have the ability to edit any of the contract parameters.</p>
+                        <p>Are you sure?</p>
                         <Button variant="success" onClick={()=>this.setState({renounceOwnerShipAttemp: false})}>no</Button>
                         <Button variant="danger" onClick={this.renounceOwnerShip}>yes</Button> 
                         </>

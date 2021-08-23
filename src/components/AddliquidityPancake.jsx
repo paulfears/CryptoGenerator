@@ -1,9 +1,9 @@
-import React from 'react'
-import pancakeswapRouterABI from './PancakeswapRouterABI'
-import PancakeswapFactoryABI from './PancakeswapFactoryABI'
-import Form from 'react-bootstrap/Form'
-import Accordion from 'react-bootstrap/Accordion'
-import Button from 'react-bootstrap/Button'
+import React from 'react';
+import pancakeswapRouterABI from './PancakeswapRouterABI';
+import PancakeswapFactoryABI from './PancakeswapFactoryABI';
+import Form from 'react-bootstrap/Form';
+import Accordion from 'react-bootstrap/Accordion';
+import Button from 'react-bootstrap/Button';
 import Loader from "react-loader-spinner";
 import {BsXOctagonFill, BsCheck} from "react-icons/bs";
 import { IconContext } from "react-icons";
@@ -126,7 +126,7 @@ class AddLiquidityPancake extends React.Component{
         return(
         <Form>
             <div className="d-flex justify-content-between">
-                <p className="lead">launch to pancakeswap</p>
+                <p className="lead">Launch to PancakeSwap</p>
                 
                 <Loader visible={this.state.status === "loading"} type="Oval" color="#0000ff" height={20} width={20} />
                 <div style={{transform: "translateY(10%)"}}>
@@ -146,21 +146,21 @@ class AddLiquidityPancake extends React.Component{
                     }
                 </div>
             </div>
-            <Form.Label>bnbAmount</Form.Label>
-            <Form.Control type="number" step="0.1" onChange={this.bnbAmmountUpdate} placeholder="bnb ammount"></Form.Control>
-            <Form.Label>token number</Form.Label>
-            <Form.Control type="number" min="1000" value={this.state.tokenNumber} onChange={this.tokenNumberUpdate} placeholder="number of tokens"></Form.Control>
+            <Form.Label>BNB Amount</Form.Label>
+            <Form.Control type="number" step="0.1" onChange={this.bnbAmmountUpdate} placeholder="BNB Amount"></Form.Control>
+            <Form.Label>Token Number</Form.Label>
+            <Form.Control type="number" min="1000" value={this.state.tokenNumber} onChange={this.tokenNumberUpdate} placeholder="Number of Tokens"></Form.Control>
             <br/>
             <div className="d-flex">
-                <Button onClick={this.approveTokens}>approve</Button>
-                <Button onClick={this.addLiquidityBNB} disabled={!this.state.approved}>Add to pancakeswap</Button>
+                <Button onClick={this.approveTokens}>Approve</Button>
+                <Button onClick={this.addLiquidityBNB} disabled={!this.state.approved}>Add to PancakeSwap</Button>
                 
             </div>
             <br/>
             <Accordion>
                 <Accordion.Header>advanced</Accordion.Header>
                 <Accordion.Body>
-                    <Form.Label>slippage</Form.Label>
+                    <Form.Label>Slippage</Form.Label>
                     <p>{this.state.slippage}%</p><Form.Range value={this.state.slippage} step="0.5" max="30" min="0" onChange={this.slippageUpdate}/>
                 </Accordion.Body>
             </Accordion>
